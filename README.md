@@ -8,30 +8,32 @@
 
 ```shell
 $ make benchmark
+wrk -t12 -c400 -d10s http://localhost:3999/
 Running 10s test @ http://localhost:3999/
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    12.24ms    3.60ms  84.58ms   95.29%
-    Req/Sec     2.72k   474.17     4.12k    91.65%
-  327730 requests in 10.10s, 60.95MB read
-  Socket errors: connect 0, read 633, write 0, timeout 0
-Requests/sec:  32434.06
-Transfer/sec:      6.03MB
+    Latency    13.77ms    3.91ms 104.57ms   97.61%
+    Req/Sec     2.42k   373.35     3.12k    90.75%
+  289345 requests in 10.01s, 53.81MB read
+  Socket errors: connect 0, read 594, write 0, timeout 0
+Requests/sec:  28898.26
+Transfer/sec:      5.37MB
 ```
 
 ### express
 
 ```shell
 $ make benchmark
+wrk -t12 -c400 -d10s http://localhost:3999/
 Running 10s test @ http://localhost:3999/
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    41.92ms    9.54ms 178.08ms   94.45%
-    Req/Sec   789.60    135.40     0.99k    83.75%
-  94435 requests in 10.03s, 23.42MB read
-  Socket errors: connect 0, read 472, write 0, timeout 0
-Requests/sec:   9419.35
-Transfer/sec:      2.34MB
+    Latency    51.85ms   13.47ms 221.38ms   92.05%
+    Req/Sec   637.38    127.10     0.95k    79.67%
+  76299 requests in 10.04s, 18.92MB read
+  Socket errors: connect 0, read 461, write 0, timeout 0
+Requests/sec:   7599.79
+Transfer/sec:      1.88MB
 ```
 
 ### golang net/http
@@ -42,12 +44,12 @@ wrk -t12 -c400 -d10s http://localhost:3999/
 Running 10s test @ http://localhost:3999/
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     4.76ms  846.18us  22.47ms   89.14%
-    Req/Sec     6.94k   667.05    12.19k    94.37%
-  833974 requests in 10.10s, 113.73MB read
-  Socket errors: connect 0, read 386, write 0, timeout 0
-Requests/sec:  82538.04
-Transfer/sec:     11.26MB
+    Latency     5.36ms    1.97ms  48.49ms   90.73%
+    Req/Sec     6.23k     1.04k   22.24k    93.43%
+  746547 requests in 10.11s, 101.81MB read
+  Socket errors: connect 0, read 378, write 0, timeout 0
+Requests/sec:  73876.46
+Transfer/sec:     10.07MB
 ```
 
 ### golang fasthttp
@@ -58,27 +60,28 @@ wrk -t12 -c400 -d10s http://localhost:3999/
 Running 10s test @ http://localhost:3999/
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     3.47ms    0.92ms  26.81ms   91.52%
-    Req/Sec     9.54k     1.07k   15.56k    82.12%
-  1146465 requests in 10.10s, 176.03MB read
-  Socket errors: connect 0, read 376, write 0, timeout 0
-Requests/sec: 113460.18
-Transfer/sec:     17.42MB
+    Latency     3.96ms    0.95ms  35.98ms   88.27%
+    Req/Sec     8.31k     0.95k   10.63k    73.42%
+  992470 requests in 10.01s, 152.39MB read
+  Socket errors: connect 0, read 375, write 0, timeout 0
+Requests/sec:  99115.16
+Transfer/sec:     15.22MB
 ```
 
 ### golang gin
 
 ```shell
 $ make benchmark
+wrk -t12 -c400 -d10s http://localhost:3999/
 Running 10s test @ http://localhost:3999/
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     4.79ms    1.09ms  32.35ms   90.36%
-    Req/Sec     6.90k     1.11k   26.61k    98.00%
-  826110 requests in 10.10s, 116.60MB read
-  Socket errors: connect 0, read 375, write 0, timeout 0
-Requests/sec:  81756.17
-Transfer/sec:     11.54MB
+    Latency     5.62ms    2.22ms  61.62ms   88.43%
+    Req/Sec     5.95k   664.02     7.29k    87.17%
+  711631 requests in 10.02s, 100.44MB read
+  Socket errors: connect 0, read 373, write 0, timeout 0
+Requests/sec:  70996.22
+Transfer/sec:     10.02MB
 ```
 
 ### golang fiber
@@ -88,11 +91,12 @@ wrk -t12 -c400 -d10s http://localhost:3999/
 Running 10s test @ http://localhost:3999/
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     4.09ms    1.05ms  37.27ms   90.80%
-    Req/Sec     8.06k     0.90k   12.53k    72.83%
-  963833 requests in 10.02s, 122.25MB read
-  Socket errors: connect 0, read 379, write 0, timeout 0
-Requests/sec:  96166.93
+    Latency     3.97ms  830.82us  22.88ms   85.59%
+    Req/Sec     8.28k     0.96k   10.02k    71.17%
+  989090 requests in 10.01s, 125.45MB read
+  Socket errors: connect 0, read 343, write 0, timeout 0
+Requests/sec:  98819.73
+Transfer/sec:     12.53MB
 ```
 
 ### go echo
@@ -110,14 +114,30 @@ Requests/sec:  70402.11
 Transfer/sec:     10.00MB
 ```
 
+### golang iris
+
+```shell
+wrk -t12 -c400 -d10s http://localhost:3999/
+Running 10s test @ http://localhost:3999/
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     5.39ms    2.21ms  51.34ms   89.23%
+    Req/Sec     6.22k   690.54     7.83k    82.25%
+  742873 requests in 10.01s, 109.10MB read
+  Socket errors: connect 0, read 380, write 0, timeout 0
+Requests/sec:  74193.07
+Transfer/sec:     10.90MB
+```
+
 ### Summary
 
 | framework       | Requests/sec |
 | --------------- | ------------ |
-| express         | 9419.35      |
-| fastify         | 32434.06     |
-| golang net/http | 82538.04     |
-| golang fasthttp | 113460.18    |
-| golang gin      | 81756.17     |
-| golang fiber    | 96166.93     |
+| express         | 7599.79      |
+| fastify         | 28898.26     |
+| golang net/http | 73876.46     |
+| golang fasthttp | 99115.16     |
+| golang gin      | 70996.22     |
+| golang fiber    | 98819.73     |
 | golang echo     | 70402.11     |
+| golang iris     | 74193.07     |
