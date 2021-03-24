@@ -80,3 +80,28 @@ Running 10s test @ http://localhost:3999/
 Requests/sec:  81756.17
 Transfer/sec:     11.54MB
 ```
+
+### golang fiber
+
+```shell
+wrk -t12 -c400 -d10s http://localhost:3999/
+Running 10s test @ http://localhost:3999/
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     4.09ms    1.05ms  37.27ms   90.80%
+    Req/Sec     8.06k     0.90k   12.53k    72.83%
+  963833 requests in 10.02s, 122.25MB read
+  Socket errors: connect 0, read 379, write 0, timeout 0
+Requests/sec:  96166.93
+```
+
+### Summary
+
+| framework       | Requests/sec |
+| --------------- | ------------ |
+| express         | 9419.35      |
+| fastify         | 32434.06     |
+| golang net/http | 82538.04     |
+| golang fasthttp | 113460.18    |
+| golang gin      | 81756.17     |
+| golang fiber    | 96166.93     |
