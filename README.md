@@ -95,6 +95,21 @@ Running 10s test @ http://localhost:3999/
 Requests/sec:  96166.93
 ```
 
+### go echo
+
+```shell
+wrk -t12 -c400 -d10s http://localhost:3999/
+Running 10s test @ http://localhost:3999/
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     5.67ms    2.56ms  78.78ms   88.40%
+    Req/Sec     5.95k     1.47k   52.78k    98.08%
+  711261 requests in 10.10s, 101.07MB read
+  Socket errors: connect 0, read 382, write 0, timeout 0
+Requests/sec:  70402.11
+Transfer/sec:     10.00MB
+```
+
 ### Summary
 
 | framework       | Requests/sec |
@@ -105,3 +120,4 @@ Requests/sec:  96166.93
 | golang fasthttp | 113460.18    |
 | golang gin      | 81756.17     |
 | golang fiber    | 96166.93     |
+| golang echo     | 70402.11     |
